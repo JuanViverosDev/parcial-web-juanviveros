@@ -2,14 +2,19 @@ import React, { useState } from "react";
 
 const CalculateBill = (props) => {
   const [minutes, setMinutes] = useState(0);
+  const [bill, setBill] = useState(0);
 
   const calculate = (minutes) => {
-    let bill = 300;
+    let newBill = 300;
     if (minutes < 3) {
-      console.log(`El precio a pagar será de: $${bill} pesos`);
+      console.log(`El precio a pagar será de: $${newBill} pesos`);
+      setBill(newBill);
+      setMinutes(0);
     } else {
-      bill += (minutes - 3) * 50;
-      console.log(`El precio a pagar será de: $${bill} pesos`);
+      newBill += (minutes - 3) * 50;
+      console.log(`El precio a pagar será de: $${newBill} pesos`);
+      setBill(newBill);
+      setMinutes(0);
     }
   };
 
@@ -22,6 +27,7 @@ const CalculateBill = (props) => {
         onChange={(e) => setMinutes(e.target.value)}
       />
       <button onClick={() => calculate(minutes)}>Calcular</button>
+      {bill > 0 && <p>El precio a pagar será de: ${bill} pesos</p>}
     </>
   );
 };
