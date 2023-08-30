@@ -5,7 +5,7 @@ const CalculateBill = (props) => {
   const [bill, setBill] = useState(0);
 
   const calculate = (minutes) => {
-    let newBill = 300;
+    let newBill = 100;
     if (minutes < 3) {
       console.log(`El precio a pagar será de: $${newBill} pesos`);
       setBill(newBill);
